@@ -1,0 +1,136 @@
+:root {
+    --bg-dark: #0a0a0a;
+    --gold-primary: #d4af37;
+    --gold-secondary: #f9e29b;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(212, 175, 55, 0.3);
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+#root {
+    height: 100%;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.gold-text {
+    color: var(--gold-primary);
+    background: linear-gradient(45deg, var(--gold-primary), var(--gold-secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gold-button {
+    background: linear-gradient(45deg, var(--gold-primary), var(--gold-secondary));
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.gold-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+/* Animations */
+@keyframes scan {
+    0% {
+        top: 0;
+    }
+
+    50% {
+        top: 100%;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+.scan-line {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: var(--gold-primary);
+    box-shadow: 0 0 15px var(--gold-primary);
+    animation: scan 4s linear infinite;
+    z-index: 10;
+}
+
+/* Layout */
+.app-container {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    grid-template-rows: 80px 1fr;
+    height: 100vh;
+    gap: 20px;
+    padding: 20px;
+}
+
+.header {
+    grid-column: 1 / span 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.main-view {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.virtual-mirror {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    background: #000;
+}
+
+.video-feed {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+.stats-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wardrobe-container {
+    height: 250px;
+}
